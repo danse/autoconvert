@@ -47,3 +47,12 @@ def from_string(value):
         try: return conversion(value)
         except ValueError: pass
 
+def to_string(value):
+    '''
+    >>> to_string(False)
+    'False'
+    '''
+    if   type(value) == datetime:
+        return value.isoformat()
+    else:
+        return str(value)
