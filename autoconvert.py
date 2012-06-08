@@ -1,7 +1,10 @@
+import re
 from datetime import datetime
 
 def datetime_conversion(v):
     '''
+    >>> datetime_conversion('2012-06-08T20:23:54.340079')
+    datetime.datetime(2012, 6, 8, 20, 23, 54)
     >>> d = datetime_conversion('2002-12-25T00:00:00')
     >>> d
     datetime.datetime(2002, 12, 25, 0, 0)
@@ -9,6 +12,7 @@ def datetime_conversion(v):
     datetime.datetime(2002, 12, 25, 0, 0)
     '''
     format = '%Y-%m-%dT%H:%M:%S'
+    v = re.sub('\.\d*', '', v)
     return datetime.strptime(v, format)
 
 def bool_conversion(v):
